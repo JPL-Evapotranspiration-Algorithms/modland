@@ -1,4 +1,4 @@
-from .MODLAND import *
+from .modland import *
 
 from os.path import join, abspath, dirname
 
