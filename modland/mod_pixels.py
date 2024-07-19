@@ -1,6 +1,6 @@
 from .MODIS_land_tile import MODISLandTile
-from .latlon_to_modland import latlon_to_modland
-from .sinusoidal_to_modland import sinusoidal_to_modland
+from .latlon_to_mod import latlon_to_modland
+from .sinusoidal_to_mod import sinusoidal_to_modland
 
 # finds target containing a latitude and longitude coordinate
 # then finds pixel within that target nearest to coordinate given size of matrix
