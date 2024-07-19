@@ -1,4 +1,4 @@
-from .sinusoidal_to_mod import sinusoidal_to_modland
+from .sinusoidal_to_modland import sinusoidal_to_modland
 from .latlon_to_sinusoidal import latlon_to_sinusoidal
 
 # MODIS land target indices for target containing latitude and longitude

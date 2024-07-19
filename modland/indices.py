@@ -4,8 +4,8 @@ import numpy as np
 import rasters as rt
 from rasters import Raster, RasterGeometry
 
-from .find_mod_tiles import find_modland_tiles
-from .mod_affine import *
+from .find_modland_tiles import find_modland_tiles
+from .modland_affine import *
 
 
 def calculate_global_modland_indices(h, v, tile_size):

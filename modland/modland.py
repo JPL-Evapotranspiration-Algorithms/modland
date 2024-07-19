@@ -24,13 +24,13 @@ from .get_proj4 import get_proj4
 from .transform_shape import *
 from .latlon_to_sinusoidal import latlon_to_sinusoidal
 from .sinusoidal_to_latlon import sinusoidal_to_latlon
-from .sinusoidal_to_mod import sinusoidal_to_modland
-from .latlon_to_mod import latlon_to_modland
+from .sinusoidal_to_modland import sinusoidal_to_modland
+from .latlon_to_modland import latlon_to_modland
 from .MODIS_land_tile import MODISLandTile
-from .mod_pixels import *
+from .modland_pixels import *
 from .outlines import *
-from .find_mod_tiles import find_modland_tiles
-from .mod_affine import *
+from .find_modland_tiles import find_modland_tiles
+from .modland_affine import *
 from .parsehv import parsehv
 from .indices import *
 
