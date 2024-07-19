@@ -1,4 +1,4 @@
-from .modis_land_tiles import *
+from .modland import *
 
 from os.path import join, abspath, dirname
 
