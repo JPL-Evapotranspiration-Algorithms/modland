@@ -28,7 +28,7 @@ MODLAND_TILE_SIZES = {
 
 # x coordinate of left side of sinusoidal target
 # (upper-left corner of pixel)
-def MODLAND_left_x_meters(horizontal_index):
+def modland_left_x_meters(horizontal_index):
     if horizontal_index >= TOTAL_COLUMNS or horizontal_index < 0:
         raise IndexError('horizontal index (%d) out of bounds' % horizontal_index)
 
@@ -36,16 +36,16 @@ def MODLAND_left_x_meters(horizontal_index):
 
 
 # x coordinate of right side of right-most pixels of sinusoidal target
-def MODLAND_right_x_meters(horizontal_index):
+def modland_right_x_meters(horizontal_index):
     if horizontal_index >= TOTAL_COLUMNS or horizontal_index < 0:
         raise IndexError('horizontal (%d) index out of bounds' % horizontal_index)
 
-    return MODLAND_left_x_meters(horizontal_index) + TILE_SIZE_METERS
+    return modland_left_x_meters(horizontal_index) + TILE_SIZE_METERS
 
 
 # y coordinate of top side of sinusoidal target
 # (upper-left corner of pixel)
-def MODLAND_top_y_meters(vertical_index):
+def modland_top_y_meters(vertical_index):
     if vertical_index >= TOTAL_ROWS or vertical_index < 0:
         raise IndexError('vertical index (%d) out of bounds' % vertical_index)
 
@@ -53,7 +53,7 @@ def MODLAND_top_y_meters(vertical_index):
 
 
 # y coordinate of the bottom side of bottom-most pixels of sinusoidal target
-def MODLAND_bottom_y_meters(vertical_index):
+def modland_bottom_y_meters(vertical_index):
     if vertical_index >= TOTAL_ROWS or vertical_index < 0:
         raise IndexError('vertical index (%d) out of bounds' % vertical_index)
 
@@ -61,5 +61,5 @@ def MODLAND_bottom_y_meters(vertical_index):
 
 
 # size across each cell in meters given the number of cells across the target
-def MODLAND_cell_size_meters(cells_across_tile):
+def modland_cell_size_meters(cells_across_tile):
     return TILE_SIZE_METERS / cells_across_tile
