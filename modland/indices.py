@@ -17,7 +17,6 @@ def calculate_global_modland_indices(h, v, tile_size):
 
     return global_row_indices, global_col_indices
 
-
 def calculate_global_modland_serial_indices_hv(h, v, tile_size):
     global_row_indices, global_col_indices = calculate_global_modland_indices(h, v, tile_size)
     serial_index = global_row_indices * tile_size * 36 + global_col_indices
@@ -27,14 +26,12 @@ def calculate_global_modland_serial_indices_hv(h, v, tile_size):
 
     return raster
 
-
 def calculate_global_modland_serial_indices(tile, tile_size):
     h = int(tile[1:3])
     v = int(tile[4:6])
     indices = calculate_global_modland_serial_indices_hv(h, v, tile_size)
 
     return indices
-
 
 def generate_modland_500m(fine_geometry: RasterGeometry, coarse_resolution: int = None) -> Raster:
     logger = logging.getLogger(__name__)
@@ -62,7 +59,6 @@ def generate_modland_500m(fine_geometry: RasterGeometry, coarse_resolution: int 
 
     return indices500m
 
-
 def generate_modland_1000m(fine_geometry: RasterGeometry, coarse_resolution: int = None) -> Raster:
     logger = logging.getLogger(__name__)
 
@@ -89,13 +85,11 @@ def generate_modland_1000m(fine_geometry: RasterGeometry, coarse_resolution: int
 
     return indices
 
-
 def calculate_global_modland_columns(spatial_resolution):
     tile_size = MODLAND_TILE_SIZES[spatial_resolution]
     global_MODLAND_columns = tile_size * 36
 
     return global_MODLAND_columns
-
 
 def generate_modland_indices(geometry: RasterGeometry, spatial_resolution: float) -> Raster:
     x, y = geometry.get_xy(projection=SINUSOIDAL_PROJECTION)

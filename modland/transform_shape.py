@@ -1,11 +1,9 @@
 from typing import Union
-
 import geopandas as gpd
 from shapely.geometry.base import BaseGeometry
 
 from .get_proj4 import get_proj4
 from .projection import *
-
 
 def transform_shape(
         shape: BaseGeometry,

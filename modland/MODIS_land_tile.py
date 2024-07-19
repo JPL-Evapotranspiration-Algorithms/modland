@@ -10,7 +10,6 @@ from .latlon_to_sinusoidal import latlon_to_sinusoidal
 from .sinusoidal_to_latlon import sinusoidal_to_latlon
 from .transform_shape import *
 
-
 # encapsulation of MODIS land target at given indices
 # affine transform of raster can be calculated given count of rows and columns
 class MODISLandTile:

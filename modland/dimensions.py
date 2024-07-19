@@ -43,6 +43,7 @@ def modland_right_x_meters(horizontal_index):
     return modland_left_x_meters(horizontal_index) + TILE_SIZE_METERS
 
 
+
 # y coordinate of top side of sinusoidal target
 # (upper-left corner of pixel)
 def modland_top_y_meters(vertical_index):
