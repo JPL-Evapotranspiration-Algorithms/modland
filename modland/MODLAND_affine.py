@@ -5,7 +5,7 @@ from rasters import RasterGrid
 from .projection import *
 from .dimensions import MODLAND_TILE_SIZES
 
-def calculate_MODLAND_affine(h, v, tile_size):
+def calculate_modland_affine(h, v, tile_size):
     # boundaries of sinusodial projection
     UPPER_LEFT_X_METERS = -20015109.355798
     UPPER_LEFT_Y_METERS = 10007554.677899
@@ -40,14 +40,14 @@ def calculate_MODLAND_affine(h, v, tile_size):
 
     return affine
 
-def calculate_global_MODLAND_affine(spatial_resolution):
+def calculate_global_modland_affine(spatial_resolution):
     tile_size = MODLAND_TILE_SIZES[spatial_resolution]
-    affine = calculate_MODLAND_affine(0, 0, tile_size)
+    affine = calculate_modland_affine(0, 0, tile_size)
 
     return affine
 
-def generate_MODLAND_grid(h, v, tile_size):
-    affine = calculate_MODLAND_affine(h, v, tile_size)
+def generate_modland_grid(h, v, tile_size):
+    affine = calculate_modland_affine(h, v, tile_size)
     grid = RasterGrid.from_affine(affine, tile_size, tile_size, crs=SINUSOIDAL_PROJECTION)
 
     return grid

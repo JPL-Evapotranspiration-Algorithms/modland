@@ -1,7 +1,10 @@
 from shapely.geometry import Polygon, MultiPolygon, Point, mapping
 
+from .latlon_to_modland import latlon_to_modland
+from .outlines import outline_latlon
+
 # calculate MODIS land tiles intersecting a polygon in latitude and longitude
-def find_MODLAND_tiles(target_geometry_latlon, return_names=True, land_only=True):
+def find_modland_tiles(target_geometry_latlon, return_names=True, land_only=True):
     """
     Calculate MODIS land tiles intersecting a polygon in latitude and longitude.
     :param target_geometry_latlon: target polygon as a shapely geometry object with latitude and longitude coordinates
@@ -41,7 +44,7 @@ def find_MODLAND_tiles(target_geometry_latlon, return_names=True, land_only=True
                 longitude, latitude = coordinate
 
             # calculate target at coordinate
-            tile = latlon_to_MODLAND(latitude, longitude)
+            tile = latlon_to_modland(latitude, longitude)
 
             # add target to list
             boundary_tiles += [tile]

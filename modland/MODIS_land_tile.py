@@ -1,16 +1,14 @@
 import numpy as np
 from affine import Affine
+from scipy.spatial.qhull import ConvexHull
 from shapely.geometry import Polygon
 from shapely.geometry.polygon import LinearRing
-from scipy.spatial.qhull import ConvexHull
 
 from .constants import *
-from .projection import *
 from .dimensions import *
-from .transform_shape import *
 from .latlon_to_sinusoidal import latlon_to_sinusoidal
-from .sinusoidal_to_MODLAND import sinusoidal_to_MODLAND
 from .sinusoidal_to_latlon import sinusoidal_to_latlon
+from .transform_shape import *
 
 # encapsulation of MODIS land target at given indices
 # affine transform of raster can be calculated given count of rows and columns
@@ -42,7 +40,7 @@ class MODISLandTile:
     # (upper-left corner of pixel)
     @property
     def x_min(self):
-        return MODLAND_left_x_meters(self.horizontal_index)
+        return modland_left_x_meters(self.horizontal_index)
 
     # x coordinate of center of upper-left pixel
     @property
@@ -52,13 +50,13 @@ class MODISLandTile:
     # x coordinate of right side right-most pixels of sinusoidal target
     @property
     def x_max(self):
-        return MODLAND_right_x_meters(self.horizontal_index)
+        return modland_right_x_meters(self.horizontal_index)
 
     # y coordinate of top side of sinusoidal target
     # (upper-left corner of pixel)
     @property
     def y_max(self):
-        return MODLAND_top_y_meters(self.vertical_index)
+        return modland_top_y_meters(self.vertical_index)
 
     # y coordinate of center of upper-left pixel
     @property
@@ -68,17 +66,17 @@ class MODISLandTile:
     # y coordinate of the bottom side of bottom-most pixels of sinusoidal target
     @property
     def y_min(self):
-        return MODLAND_bottom_y_meters(self.vertical_index)
+        return modland_bottom_y_meters(self.vertical_index)
 
     # width of cell in meters given number of columns
     @property
     def cell_width_meters(self):
-        return MODLAND_cell_size_meters(self.columns)
+        return modland_cell_size_meters(self.columns)
 
     # positive height of cell in meters given number of rows
     @property
     def cell_height_meters(self):
-        return MODLAND_cell_size_meters(self.rows)
+        return modland_cell_size_meters(self.rows)
 
     # tuple of cell width and height
     @property

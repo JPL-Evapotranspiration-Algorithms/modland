@@ -1,10 +1,9 @@
 from typing import Union
-from pyproj import Proj
-from shapely.geometry.base import BaseGeometry
 import geopandas as gpd
+from shapely.geometry.base import BaseGeometry
 
-from .projection import *
 from .get_proj4 import get_proj4
+from .projection import *
 
 def transform_shape(
         shape: BaseGeometry,

@@ -1,7 +1,7 @@
 from .dimensions import *
 
 # MODIS land target indices for target containing sinusoidal coordinate
-def sinusoidal_to_MODLAND(x_sinusoidal, y_sinusoidal):
+def sinusoidal_to_modland(x_sinusoidal, y_sinusoidal):
     if x_sinusoidal < UPPER_LEFT_X_METERS or x_sinusoidal > LOWER_RIGHT_X_METERS:
         raise ValueError('sinusoidal x coordinate (%f) out of bounds' % x_sinusoidal)
 
