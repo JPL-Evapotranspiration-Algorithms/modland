@@ -8,6 +8,7 @@ from .constants import *
 from .dimensions import *
 from .latlon_to_sinusoidal import latlon_to_sinusoidal
 from .sinusoidal_to_latlon import sinusoidal_to_latlon
+from .sinusoidal_to_modland import sinusoidal_to_modland
 from .transform_shape import *
 
 # encapsulation of MODIS land target at given indices
@@ -266,7 +267,7 @@ class MODISLandTile:
         if y_sinusoidal < LOWER_RIGHT_Y_METERS or y_sinusoidal > UPPER_LEFT_Y_METERS:
             raise ValueError('sinusoidal y (%f) coordinate out of bounds' % y_sinusoidal)
 
-        h, v = sinusoidal_to_MODLAND(x_sinusoidal, y_sinusoidal)
+        h, v = sinusoidal_to_modland(x_sinusoidal, y_sinusoidal)
 
         return h == self.horizontal_index and v == self.vertical_index
 

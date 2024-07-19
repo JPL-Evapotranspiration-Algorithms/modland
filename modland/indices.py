@@ -87,18 +87,18 @@ def generate_modland_1000m(fine_geometry: RasterGeometry, coarse_resolution: int
 
 def calculate_global_modland_columns(spatial_resolution):
     tile_size = MODLAND_TILE_SIZES[spatial_resolution]
-    global_MODLAND_columns = tile_size * 36
+    global_modland_columns = tile_size * 36
 
-    return global_MODLAND_columns
+    return global_modland_columns
 
 def generate_modland_indices(geometry: RasterGeometry, spatial_resolution: float) -> Raster:
     x, y = geometry.get_xy(projection=SINUSOIDAL_PROJECTION)
-    global_MODLAND_affine = calculate_global_modland_affine(spatial_resolution)
-    global_col_indices, global_row_indices = ~global_MODLAND_affine * (x, y)
+    global_modland_affine = calculate_global_modland_affine(spatial_resolution)
+    global_col_indices, global_row_indices = ~global_modland_affine * (x, y)
     global_col_indices = global_col_indices.astype(np.int32)
     global_row_indices = global_row_indices.astype(np.int32)
-    global_MODLAND_columns = calculate_global_modland_columns(spatial_resolution)
-    serial_index = global_row_indices * global_MODLAND_columns + global_col_indices
+    global_modland_columns = calculate_global_modland_columns(spatial_resolution)
+    serial_index = global_row_indices * global_modland_columns + global_col_indices
     serial_index = serial_index.astype(np.int32)
     serial_index = Raster(serial_index, geometry=geometry)
 
