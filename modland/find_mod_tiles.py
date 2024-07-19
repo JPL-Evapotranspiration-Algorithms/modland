@@ -1,6 +1,6 @@
 from shapely.geometry import Polygon, MultiPolygon, Point, mapping
 
-from .latlon_to_modland import latlon_to_modland
+from .latlon_to_mod import latlon_to_modland
 from .outlines import outline_latlon
 
 # calculate MODIS land tiles intersecting a polygon in latitude and longitude
