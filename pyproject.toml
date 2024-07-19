@@ -3,7 +3,7 @@ requires = ["setuptools>=60", "setuptools-scm>=8.0", "wheel"]
 
 [project]
 name = "modland"
-version = "1.0.1"
+version = "1.0.2"
 description = "generates rasters of field capacity and wilting point from the SoilGrids dataset"
 readme = "README.md"
 authors = [
@@ -28,3 +28,6 @@ requires-python = ">=3.11"
 
 [tool.setuptools.package-data]
 modland = ["*.txt"]
+
+[project.urls]
+"Homepage" = "https://github.com/JPL-Evapotranspiration-Algorithms/modland"
