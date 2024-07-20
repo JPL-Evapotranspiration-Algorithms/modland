@@ -8,4 +8,4 @@ The Julia equivalent for this package is [MODLAND.jl](https://github.com/STARS-D
 [gregory.h.halverson@jpl.nasa.gov](mailto:gregory.h.halverson@jpl.nasa.gov)<br>
 NASA Jet Propulsion Laboratory 329G
 
-![modland grid](modland grid.jpeg)
+![modland grid](modland_grid.jpeg)
