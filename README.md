@@ -9,3 +9,17 @@ The Julia equivalent for this package is [MODLAND.jl](https://github.com/STARS-D
 NASA Jet Propulsion Laboratory 329G
 
 ![modland grid](modland_grid.jpeg)
+
+## Installation
+
+This package is available on PyPi as a [pip package](https://pypi.org/project/modland/).
+
+```bash
+pip install modland
+```
+
+## Usage
+
+```python
+import modland
+```
