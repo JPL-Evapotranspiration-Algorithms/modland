@@ -7,3 +7,19 @@ The Julia equivalent for this package is [MODLAND.jl](https://github.com/STARS-D
 [Gregory H. Halverson](https://github.com/gregory-halverson-jpl) (they/them)<br>
 [gregory.h.halverson@jpl.nasa.gov](mailto:gregory.h.halverson@jpl.nasa.gov)<br>
 NASA Jet Propulsion Laboratory 329G
+
+![modland grid](modland_grid.jpeg)
+
+## Installation
+
+This package is available on PyPi as a [pip package](https://pypi.org/project/modland/).
+
+```bash
+pip install modland
+```
+
+## Usage
+
+```python
+import modland
+```
