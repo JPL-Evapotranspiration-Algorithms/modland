@@ -10,6 +10,13 @@ NASA Jet Propulsion Laboratory 329G
 
 ![modland grid](modland_grid.jpeg)
 
+## Environment
+
+```
+mamba create -y -n modland -c conda-forge python=3.11 jupyter pykdtree 
+mamba activate modland
+```
+
 ## Installation
 
 This package is available on PyPi as a [pip package](https://pypi.org/project/modland/).
