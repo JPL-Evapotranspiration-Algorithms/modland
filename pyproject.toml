@@ -4,7 +4,7 @@ requires = ["setuptools>=60", "setuptools-scm>=8.0", "wheel"]
 [project]
 name = "modland"
 version = "1.1.0"
-description = "generates rasters of field capacity and wilting point from the SoilGrids dataset"
+description = "georeferencing for MODIS/VIIRS sinusoidal tiles"
 readme = "README.md"
 authors = [
     { name = "Gregory H. Halverson", email = "gregory.h.halverson@jpl.nasa.gov" },
