@@ -4,8 +4,24 @@ from rasters import RasterGrid
 
 from .projection import *
 from .dimensions import MODLAND_TILE_SIZES
+from .parsehv import parsehv
 
-def calculate_modland_affine(h, v, tile_size):
+def calculate_modland_affine(h: int = None, v: int = None, tile_size: int = None, tile: str = None, spatial_resolution: int = None):
+    if tile_size is None and spatial_resolution is not None:
+        tile_size = MODLAND_TILE_SIZES[spatial_resolution]
+    
+    if tile_size is None:
+        raise ValueError("tile size not given")
+
+    if h is None or v is None and tile is not None:
+        h, v = parsehv(tile)
+    
+    if tile is None and h is not None and v is not None:
+        tile = f"h{h:02d}v{v:02d}"
+    
+    if tile is None and h is None and v is None:
+        raise ValueError("tile not given")
+
     # boundaries of sinusodial projection
     UPPER_LEFT_X_METERS = -20015109.355798
     UPPER_LEFT_Y_METERS = 10007554.677899
@@ -46,8 +62,23 @@ def calculate_global_modland_affine(spatial_resolution):
 
     return affine
 
-def generate_modland_grid(h, v, tile_size):
-    affine = calculate_modland_affine(h, v, tile_size)
+def generate_modland_grid(h: int = None, v: int = None, tile_size: int = None, tile: str = None, spatial_resolution: int = None):
+    if tile_size is None and spatial_resolution is not None:
+        tile_size = MODLAND_TILE_SIZES[spatial_resolution]
+    
+    if tile_size is None:
+        raise ValueError("tile size not given")
+
+    if h is None or v is None and tile is not None:
+        h, v = parsehv(tile)
+    
+    if tile is None and h is not None and v is not None:
+        tile = f"h{h:02d}v{v:02d}"
+    
+    if tile is None and h is None and v is None:
+        raise ValueError("tile not given")
+
+    affine = calculate_modland_affine(h=h, v=v, tile_size=tile_size)
     grid = RasterGrid.from_affine(affine, tile_size, tile_size, crs=SINUSOIDAL_PROJECTION)
 
     return grid
