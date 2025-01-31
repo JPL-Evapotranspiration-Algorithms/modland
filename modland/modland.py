@@ -11,7 +11,7 @@ import rasterio
 from affine import Affine
 from numpy import where, nan, isnan, all
 from pyproj import Proj
-from scipy.spatial.qhull import ConvexHull
+from scipy.spatial import ConvexHull
 from shapely.geometry import Polygon, Point, MultiPolygon
 from shapely.geometry import mapping
 from shapely.geometry.base import BaseGeometry

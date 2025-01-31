@@ -1,6 +1,6 @@
 import numpy as np
 from affine import Affine
-from scipy.spatial.qhull import ConvexHull
+from scipy.spatial import ConvexHull
 from shapely.geometry import Polygon
 from shapely.geometry.polygon import LinearRing
 
