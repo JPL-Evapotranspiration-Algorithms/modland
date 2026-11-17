@@ -117,7 +117,7 @@ class MODISLandTile:
 
     @property
     def affine_center(self):
-        return self.affine_transform * Affine.translation(0.5, 0.5)
+        return self.affine_transform @ Affine.translation(0.5, 0.5)
 
     # affine transform as tuple in ESRI world format
     @property
@@ -187,7 +187,7 @@ class MODISLandTile:
             raise IndexError('column (%d) out of bounds' % column)
 
         # top-left corner coordinates of pixel
-        x_sinusoidal, y_sinusoidal = self.affine_transform * (column, row)
+        x_sinusoidal, y_sinusoidal = self.affine_transform @ (column, row)
 
         # offset coordinates to center of pixel
         if center:
@@ -206,7 +206,7 @@ class MODISLandTile:
 
         return tuple([int(index)
                       for index
-                      in ~(self.affine_transform) * (x_sinusoidal, y_sinusoidal)])
+                      in ~(self.affine_transform) @ (x_sinusoidal, y_sinusoidal)])
 
     def row_column_from_latlon(self, latitude, longitude):
         return self.row_column_from_sinusoidal(*latlon_to_sinusoidal(latitude, longitude))
@@ -244,7 +244,8 @@ class MODISLandTile:
         else:
             affine = self.affine_transform
 
-        x_matrix, y_matrix = np.meshgrid(np.arange(self.columns), np.arange(self.rows)) * affine
+        cols, rows = np.meshgrid(np.arange(self.columns), np.arange(self.rows))
+        x_matrix, y_matrix = affine @ (cols, rows)
         lon, lat = SINUSOIDAL(x_matrix, y_matrix, inverse=True)
 
         if self.horizontal_index < 18:
@@ -299,7 +300,7 @@ class MODISLandTile:
         else:
             x_matrix, y_matrix, lon, lat = self.sinusoidal_matrices()
             points = np.dstack([x_matrix.flatten(), y_matrix.flatten()])[0]
-            points = points[~all(np.isnan(points), axis=1)]
+            points = points[~np.all(np.isnan(points), axis=1)]
             hull = ConvexHull(points)
             vertices = hull.points[hull.vertices]
             poly = Polygon(vertices)

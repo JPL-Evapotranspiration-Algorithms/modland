@@ -12,8 +12,8 @@ def calculate_global_modland_indices(h, v, tile_size):
     global_modis_affine = calculate_modland_affine(0, 0, tile_size)
     affine = calculate_modland_affine(h, v, tile_size)
     tile_col_indices, tile_row_indices = np.meshgrid(np.arange(tile_size), np.arange(tile_size))
-    x, y = affine * (tile_col_indices, tile_row_indices)
-    global_col_indices, global_row_indices = ~global_modis_affine * (x, y)
+    x, y = affine @ (tile_col_indices, tile_row_indices)
+    global_col_indices, global_row_indices = ~global_modis_affine @ (x, y)
 
     return global_row_indices, global_col_indices
 
@@ -94,7 +94,7 @@ def calculate_global_modland_columns(spatial_resolution):
 def generate_modland_indices(geometry: RasterGeometry, spatial_resolution: float) -> Raster:
     x, y = geometry.get_xy(projection=SINUSOIDAL_PROJECTION)
     global_modland_affine = calculate_global_modland_affine(spatial_resolution)
-    global_col_indices, global_row_indices = ~global_modland_affine * (x, y)
+    global_col_indices, global_row_indices = ~global_modland_affine @ (x, y)
     global_col_indices = global_col_indices.astype(np.int32)
     global_row_indices = global_row_indices.astype(np.int32)
     global_modland_columns = calculate_global_modland_columns(spatial_resolution)

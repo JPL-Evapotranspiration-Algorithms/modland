@@ -8,7 +8,7 @@ def outline_sinusoidal(h, v):
     :param v: vertical index of MODIS land target
     :return: shapely geometry object containing polygon outline of MODIS land target in sinusoidal coordinates
     """
-    return MODISLandTile(h, v, 100, 100).outline_sinusoidal()
+    return MODISLandTile(h, v, 100, 100).outline_sinusoidal
 
 
 # calculate polygon outline of MODIS land target in latitude and longitude

@@ -1,4 +1,6 @@
-.PHONY: clean test build dist environment install uninstall reinstall test
+PYTHON_VERSION ?= 3.14
+
+.PHONY: clean test build dist environment install uninstall reinstall repomix
 
 clean:
 	rm -rf *.o *.out *.log
@@ -19,7 +21,7 @@ dist:
 	twine upload dist/*
 
 environment:
-	mamba create -y -n modland python=3.11 jupyter
+	mamba create -y -n modland python=$(PYTHON_VERSION) jupyter
 
 install:
 	pip install -e .[dev]
@@ -30,9 +32,6 @@ uninstall:
 reinstall:
 	make uninstall
 	make install
-
-test:
-	pytest
 
 repomix:
 	npx repomix -i "**/*.jpeg,**/*.ipynb" --copy
