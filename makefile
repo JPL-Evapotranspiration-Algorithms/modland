@@ -19,7 +19,7 @@ dist:
 	twine upload dist/*
 
 environment:
-	mamba create -y -n modland python=3.11 jupyter pykdtree
+	mamba create -y -n modland python=3.11 jupyter
 
 install:
 	pip install -e .[dev]
@@ -33,3 +33,6 @@ reinstall:
 
 test:
 	pytest
+
+repomix:
+	npx repomix -i "**/*.jpeg,**/*.ipynb" --copy
